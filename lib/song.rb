@@ -48,8 +48,8 @@ class Song
 
   def self.new_from_filename(filename)
     file_array = filename.split(/\-|\./)
-    artist_name = file_array[0].chomp.strip
-    name = file_array[1].chomp.strip 
+    artist_name = file_array[0].strip
+    name = file_array[1].strip 
     song = Song.new
     song.name = name
     song.artist_name = artist_name
