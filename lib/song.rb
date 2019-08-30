@@ -33,8 +33,7 @@ class Song
   end
 
   def self.alphabetical
-    @@all.map {|song|song.name}.sort.map {|name|find_by_name(name)}
-
+    @@all.sort_by {|song|song.name}
   end
 
   def self.find_or_create_by_name(name)
@@ -42,7 +41,8 @@ class Song
   end
 
   def self.new_from_filename(filename)
-    filename = filename.split("-").join(",").split(".mp3").join.split(",")
+    
+    filename = filename.slice(0...-4).split("-")
     song = new_by_name(filename[1].strip)
     song.artist_name = filename[0].strip
     song
